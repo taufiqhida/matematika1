@@ -199,6 +199,71 @@ B7 = B6.elementary_row_op('n->kn', 1, 2/7)
 B8 = B7.elementary_row_op('n->n+km', 0, 1, 2)
 # print(B8)
 B9 = B8.elementary_row_op('n->n+km', 0, 3, 1)
-print
+# print(B9)
 
+
+# Metode Jacobi
+#36
+
+tol = 1.0E-10 #toleransi
+delta = 1000
+xn = 0.0
+yn = 0.0
+zn = 0.0
+n = 0
+
+while delta > tol:
+    n += 1
+    # xn+1 = F9(xn)
+    xnp1 = (1/4.0)*(1.0 - yn + zn)
+    ynp1 = -(1/5.0)*(3.0 - xn - zn)
+    znp1 = (1/2.0)*(2.0 - xn - yn)
+    delta = abs(xnp1 - xn) + abs(ynp1 - yn) + abs(znp1 - zn)
+    # Simpan untuk iterasi berikutnya
+    xn = xnp1
+    yn = ynp1
+    zn = znp1
+
+    #  print([n, xn, yn, zn])
+
+
+#37
+
+tol = 1.0E-10 #Toleransi
+delta = 1000 #
+xn = 0.0
+yn = 0.0
+xn = 0.0
+n = 0
+while delta > tol:
+    n += 1
+    # xn+1 = F(xn)
+    xnp1 = (1/4.0)*(1.0 - yn + zn)
+    ynp1 = -(1/5.0)*(3.0 - xnp1 - zn)
+    znp1 = (1/2.0)*(2.0 - xnp1 - ynp1)
+    delta = abs(xnp1 - xn) + abs(ynp1 - yn) + abs(znp1 - zn)
+    # Simpan untuk itelarasi
+    xn = xnp1
+    yn = ynp1
+    zn = znp1
+
+    # print([n, xn, yn, zn])
+
+
+#38
+# Dengan menggunakan Modul Scipy.linalg
+# Dari persamaan di atas di peroleh
+A = np.array([[4, 1, -1], [1, -5, 1],[1, 1, 2]])
+b = np.array([[1], [3], [2]])
+X = la.solve(A, b)
+
+# print(x)
+
+
+#39
+# Dengan menggunkan Modul Sympy.solve
+A2 = sp.Matrix(A)
+b2 = sp.Matrix(b)
+x2 = A2.solve(b2)
+# print(x2)
 
